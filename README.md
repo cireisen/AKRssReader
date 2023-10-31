@@ -10,7 +10,7 @@ AKRssReaderは自動的にアークナイツのビリビリ公式アカウント
 # HowToUse
 공지 내용을 보내고싶은 서버의 설정-연동-웹훅에서 공지를 보낼 웹훅의 주소를 복사합니다.
 
-bin에 Resouce폴더를 만들고, Config.json 파일을 작성합니다.
+bin에 resouce폴더를 만들고, Config.json 파일을 작성합니다.
 
 ```
 {
