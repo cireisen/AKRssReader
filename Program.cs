@@ -14,6 +14,9 @@ namespace AKRssReader
             Console.WriteLine("");
             Console.WriteLine("");
 
+            PrintLine("Get ConfigFile Data");
+            Config.InitConfig();
+
             StartAsync().GetAwaiter().GetResult();
             
             Console.WriteLine("");
@@ -25,11 +28,15 @@ namespace AKRssReader
         private static async Task StartAsync()
         {
             DBConnector conn = new DBConnector();
-
+            
+            PrintLine("Connecting to DB");
             conn.ConnectDB();
+
+            PrintLine("Connect Complete");
 
             RssReader rssReader = new RssReader();
 
+            PrintLine("Start ReadRss");
             await rssReader.OpenRss();
         }
     }

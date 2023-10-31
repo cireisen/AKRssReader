@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AKRssReader
 {
-    internal class DBConnector
+    internal class DBConnector : IDisposable
     {
         private string line = Environment.NewLine;
         private string _connectionString = "";
@@ -145,15 +145,21 @@ namespace AKRssReader
 
             _ = reader;
 
-            if(reader == null)
+            if(!reader.HasRows)
             {
-                sql = "CREATE TABLE RSS_AK_POSTS(seq int, link text, title text, description text, uploadtime text)";
+                sql = "CREATE TABLE RSS_AK_POSTS(seq integer primary key, link text key, title text, description text, uploadtime text)";
 
                 if(!ExecuteNonQuery(sql))
                 {
                     PrintWarning("while CreateTable executed -1");
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            _conn.Close();
+            _conn.Dispose();
         }
     }
 }
