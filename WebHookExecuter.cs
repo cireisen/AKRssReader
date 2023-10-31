@@ -13,7 +13,10 @@ namespace AKRssReader
         public static async Task SendRssDataToDiscord(Post post)
         {
             string url = Config.WebHookLink;
-            url += @"?thread_id=" + Config.ThreadID;
+            if(!string.IsNullOrEmpty(Config.ThreadID))
+            {
+                url += @"?thread_id=" + Config.ThreadID;
+            }
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
             webRequest.Method = "POST";
             webRequest.Timeout = 30 * 1000;
