@@ -41,7 +41,7 @@ namespace AKRssReader
                 PrintLine("Start ReadRss");
                 await rssReader.OpenRss();
 
-                await Task.Delay(1000 * 60);
+                await Task.Delay(1000 * 60 * 30);
             }
         }
     }
