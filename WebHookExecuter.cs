@@ -13,10 +13,13 @@ namespace AKRssReader
         public static async Task SendRssDataToDiscord(Post post)
         {
             string url = Config.WebHookLink;
+
+            //thread 여부 확인
             if(!string.IsNullOrEmpty(Config.ThreadID))
             {
                 url += @"?thread_id=" + Config.ThreadID;
             }
+
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
             webRequest.Method = "POST";
             webRequest.Timeout = 30 * 1000;
@@ -32,10 +35,11 @@ namespace AKRssReader
             Stream dataStream = webRequest.GetRequestStream();
             dataStream.Write(byteArray, 0, byteArray.Length);
             dataStream.Close();
+            dataStream.Dispose();
             using (HttpWebResponse resp = (HttpWebResponse)webRequest.GetResponse())
             {
                 HttpStatusCode status = resp.StatusCode;
-                Console.WriteLine(status);      // status 가 정상일경우 OK가 입력된다.
+                Console.WriteLine(status);
 
                 // 응답과 관련된 stream을 가져온다.
                 Stream respStream = resp.GetResponseStream();

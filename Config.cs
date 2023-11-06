@@ -27,9 +27,9 @@ namespace AKRssReader
                         WebHookLink = json["WebHookLink"].ToString();
                         ThreadID = json["ThreadID"].ToString();
                     }
-                    catch
+                    catch (Exception e)
                     {
-
+                        Logger.PrintException(e, "InitConfig");
                     }
                 }
             }

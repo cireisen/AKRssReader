@@ -34,10 +34,15 @@ namespace AKRssReader
 
             PrintLine("Connect Complete");
 
-            RssReader rssReader = new RssReader();
+            while(true)
+            {
+                RssReader rssReader = new RssReader();
 
-            PrintLine("Start ReadRss");
-            await rssReader.OpenRss();
+                PrintLine("Start ReadRss");
+                await rssReader.OpenRss();
+
+                await Task.Delay(1000 * 60);
+            }
         }
     }
 }

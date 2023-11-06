@@ -13,29 +13,29 @@ namespace AKRssReader
         public static void PrintException(Exception e, string functionName)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(divLine);
-            Console.WriteLine($"Error Occured While {functionName}");
-            Console.WriteLine("");
-            Console.WriteLine(e.ToString());
-            Console.WriteLine("");
-            Console.WriteLine(divLine);
+            PrintLine(divLine);
+            PrintLine($"Error Occured While {functionName}");
+            PrintLine("");
+            PrintLine(e.ToString());
+            PrintLine("");
+            PrintLine(divLine);
             Console.ResetColor();
         }
 
         public static void PrintLine(object line)
         {
-            Console.WriteLine(line);
+            Console.WriteLine($"AKRssReader {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} : {line}");
             
         }
 
         public static void PrintWarning(object line)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(divLine);
-            Console.WriteLine("");
-            Console.WriteLine(line);
-            Console.WriteLine("");
-            Console.WriteLine(divLine);
+            PrintLine(divLine);
+            PrintLine("");
+            PrintLine(line);
+            PrintLine("");
+            PrintLine(divLine);
             Console.ResetColor();
         }
 
